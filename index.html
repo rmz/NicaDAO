@@ -34,6 +34,15 @@
         z-index: 1000;
         cursor: crosshair;
       }
+      #qr {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+        z-index: 1000;
+      }
+      #qr img { width: 100%; height: 100%; }
       .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
@@ -76,14 +85,17 @@
       <div class="modal-content" style="width:600px; height:400px">
       <a class="close">&times;</a>
       <h1>Nica DAO</h1>
-      <p>We seek to help the families of political prisoners in Nicaragua. We are compelled by the growing dispare of Nicaragua citizens during this election year. Ley 1055, Ley Defensa de los Derechos del Pueblo was passed last December to imporison all challenging presidential candidates by the Ortega regime.</p>
-    <p><a href="https://github.com/daseme/mutation/wiki">Learn More</a>
+      <p>We seek to help the families of political prisoners in Nicaragua. We are compelled by the growing dispare of Nicaragua citizens during this election year. Ley 1055, Ley Defensa de los Derechos del Pueblo was passed last December to imporison all challenging presidential candidates by the Ortega-Murillo regime.</p>
+    <p><a href="http://ambriente.com/nicaDAO/mediaKit.zip">Download Social Media Kit</a>
     </div>
-  </div>
+    </div>
+
+    <div id="qr"><img src="img/nicaDAO_QR.png" /></div>
     <a-scene>
       <a-assets>
 
-        <!--<img id="ground" src="img/ground.jpg">-->
+        <img id="meiselas" src="img/molotovMan.jpg">
+        <img id="ley1055" src="img/ley1055.jpg">
 
         <a-asset-item id="volcano" src="img/volcano/scene.gltf"></a-asset-item>
 
@@ -190,6 +202,22 @@
           rotation="0 -30 0"
           width="3"
           height="4">
+        </a-plane>
+
+        <!-- The past -->
+        <a-plane src="#meiselas"
+          position="5 -3 12"
+          rotation="0 180 0"
+          width="8"
+          height="6"
+          material="side: double">
+        </a-plane>
+        <a-plane src="#ley1055"
+          position="-5 1 6"
+          rotation="180 -35 180"
+          width="10"
+          height="5"
+          material="side: double">
         </a-plane>
 
       <a-sound
