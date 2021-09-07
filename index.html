@@ -1,19 +1,21 @@
 <html>
   <head>
     <title>NicaDAO</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script>
       // WebXR requires HTTPS, so the site doesn't work if someone manually enters
       // the URL and ends up using HTTP. To work around this, force redirect from
       // http to https for non-localhost addresses.
-      if (window.location.protocol == "http:" &&
-          window.location.hostname != "localhost" &&
-          window.location.hostname != "127.0.0.1" &&
-          window.location.hostname != "[::1]") {
-        window.location = window.location.href.replace('http:', 'https:');
+      if (
+        window.location.protocol == "http:" &&
+        window.location.hostname != "localhost" &&
+        window.location.hostname != "127.0.0.1" &&
+        window.location.hostname != "[::1]"
+      ) {
+        window.location = window.location.href.replace("http:", "https:");
       }
     </script>
 
@@ -22,7 +24,7 @@
     <style>
       body {
         font-family: sans-serif;
-       }
+      }
       nav {
         position: fixed;
         top: 10px;
@@ -42,60 +44,72 @@
         height: 120px;
         z-index: 1000;
       }
-      #qr img { width: 100%; height: 100%; }
+      #qr img {
+        width: 100%;
+        height: 100%;
+      }
       .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 100; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgba(0,0,0,0.3);
-  }
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 100; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.3);
+      }
 
-  /* Modal Content/Box - https://www.w3schools.com/howto/howto_css_modals.asp */
-  .modal-content {
-      background-color: rgba(256,256,256,0.6);
-      margin: 5vh auto; /* 15% from the top and centered */
-      padding: 10px;
-      border: 1px solid #000;
-  }
-  /* The Close Button */
-  .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-  }
+      /* Modal Content/Box - https://www.w3schools.com/howto/howto_css_modals.asp */
+      .modal-content {
+        background-color: rgba(256, 256, 256, 0.6);
+        margin: 5vh auto; /* 15% from the top and centered */
+        padding: 10px;
+        border: 1px solid #000;
+      }
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
 
-  .close:hover,
-  .close:focus {
-      color: red;
-      text-decoration: none;
-      /*cursor: url('covid32.png'), default !important;*/
-  }
+      .close:hover,
+      .close:focus {
+        color: red;
+        text-decoration: none;
+        /*cursor: url('covid32.png'), default !important;*/
+      }
     </style>
   </head>
 
   <body>
     <nav><a data-modal="modal001">About</a></nav>
     <div id="modal001" class="modal">
-      <div class="modal-content" style="width:600px; height:400px">
-      <a class="close">&times;</a>
-      <h1>Nica DAO</h1>
-      <p>We seek to help the families of political prisoners in Nicaragua. We are compelled by the growing dispare of Nicaragua citizens during this election year. Ley 1055, Ley Defensa de los Derechos del Pueblo was passed last December to imporison all challenging presidential candidates by the Ortega-Murillo regime.</p>
-    <p><a href="http://ambriente.com/nicaDAO/mediaKit.zip">Download Social Media Kit</a>
-    </div>
+      <div class="modal-content" style="width: 600px; height: 400px;">
+        <a class="close">&times;</a>
+        <h1>Nica DAO</h1>
+        <p>
+          We seek to help the families of political prisoners in Nicaragua. We
+          are compelled by the growing dispare of Nicaragua citizens during this
+          election year. Ley 1055, Ley Defensa de los Derechos del Pueblo was
+          passed last December to imporison all challenging presidential
+          candidates by the Ortega-Murillo regime.
+        </p>
+        <p>
+          <a href="http://ambriente.com/nicaDAO/mediaKit.zip"
+            >Download Social Media Kit</a
+          >
+        </p>
+      </div>
     </div>
 
     <div id="qr"><img src="img/nicaDAO_QR.png" /></div>
     <a-scene>
       <a-assets>
-
-        <img id="meiselas" src="img/molotovMan.jpg">
-        <img id="ley1055" src="img/ley1055.jpg">
+        <img id="meiselas" src="img/molotovMan.jpg" />
+        <img id="ley1055" src="img/ley1055.jpg" />
 
         <a-asset-item id="volcano" src="img/volcano/scene.gltf"></a-asset-item>
 
@@ -104,7 +118,6 @@
         <img src="img/tamaraDavila.png" id="tamara" />
         <img src="img/cristianaChamorro.png" id="chamorro" />
         <img src="img/doraMariaTellez.png" id="tellez" />
-
       </a-assets>
 
       <!-- Textured plane parallel to ground.
@@ -120,61 +133,73 @@
           to: 3.5;
           dir: alternate;
           dur: 5000;
-          loop: true">
+          loop: true"
+      >
       </a-text>
 
       <a-light
         type="directional"
         intensity="2"
         color="#fff59E"
-        position="-2.5 10 -2"></a-light>
+        position="-2.5 10 -2"
+      ></a-light>
 
       <!-- 5 Volcanoes -->
-      <a-gltf-model src="#volcano"
+      <a-gltf-model
+        src="#volcano"
         position="-4 0 -5"
         scale="1.5 2 1.5"
         animation="property: object3D.rotation.y;
           to: 360;
           dir: alternate-reverse;
           dur: 15000;
-          loop: true">
+          loop: true"
+      >
       </a-gltf-model>
-      <a-gltf-model src="#volcano"
+      <a-gltf-model
+        src="#volcano"
         position="-2 0 -5"
         scale="1.5 2 1.5"
         animation="property: object3D.rotation.y;
           to: 360;
           dir: alternate-reverse;
           dur: 15000;
-          loop: true">
+          loop: true"
+      >
       </a-gltf-model>
-      <a-gltf-model src="#volcano"
+      <a-gltf-model
+        src="#volcano"
         position="0 0 -5"
         scale="1.5 2 1.5"
         animation="property: object3D.rotation.y;
           to: 360;
           dir: alternate-reverse;
           dur: 15000;
-          loop: true">
+          loop: true"
+      >
       </a-gltf-model>
-      <a-gltf-model src="#volcano"
+      <a-gltf-model
+        src="#volcano"
         position="2 0 -5"
         scale="1.5 2 1.5"
         animation="property: object3D.rotation.y;
           to: 360;
           dir: alternate-reverse;
           dur: 15000;
-          loop: true">
+          loop: true"
+      >
       </a-gltf-model>
-        <a-gltf-model src="#volcano"
+      <a-gltf-model
+        src="#volcano"
         position="4 0 -5"
         scale="1.5 2 1.5"
         animation="property: object3D.rotation.y;
           to: 360;
           dir: alternate-reverse;
           dur: 15000;
-          loop: true">
-        </a-gltf-model>
+          loop: true"
+      >
+      </a-gltf-model>
       <!-- https://htmlcolorcodes.com/color-picker/
          ambient, directional, hemisphere, point, spot
       <a-light
@@ -184,77 +209,80 @@
         position="0 10 10"></a-light>-->
       <a-entity id="light" light="type: hemisphere; color: #fff59E"></a-entity>
 
-        <!-- Activists -->
-        <a-plane src="#tamara"
-          position="-6 3 -12"
-          rotation="0 30 0"
-          width="3"
-          height="4">
-        </a-plane>
-        <a-plane src="#chamorro"
-          position="0 3 -13"
-          rotation="0 0 0"
-          width="3"
-          height="4">
-        </a-plane>
-        <a-plane src="#tellez"
-          position="6 3 -12"
-          rotation="0 -30 0"
-          width="3"
-          height="4">
-        </a-plane>
+      <!-- Activists -->
+      <a-plane
+        src="#tamara"
+        position="-6 3 -12"
+        rotation="0 30 0"
+        width="3"
+        height="4"
+      >
+      </a-plane>
+      <a-plane
+        src="#chamorro"
+        position="0 3 -13"
+        rotation="0 0 0"
+        width="3"
+        height="4"
+      >
+      </a-plane>
+      <a-plane
+        src="#tellez"
+        position="6 3 -12"
+        rotation="0 -30 0"
+        width="3"
+        height="4"
+      >
+      </a-plane>
 
-        <!-- The past -->
-        <a-plane src="#meiselas"
-          position="5 -3 12"
-          rotation="0 180 0"
-          width="8"
-          height="6"
-          material="side: double">
-        </a-plane>
-        <a-plane src="#ley1055"
-          position="-5 1 6"
-          rotation="180 -35 180"
-          width="10"
-          height="5"
-          material="side: double">
-        </a-plane>
+      <!-- The past -->
+      <a-plane
+        src="#meiselas"
+        position="5 -3 12"
+        rotation="0 180 0"
+        width="8"
+        height="6"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        src="#ley1055"
+        position="-5 1 6"
+        rotation="180 -35 180"
+        width="10"
+        height="5"
+        material="side: double"
+      >
+      </a-plane>
 
       <a-sound
         src="#background"
         autoplay="true"
         position="0 0 0"
-        loop="true"></a-sound>
-
+        loop="true"
+      ></a-sound>
     </a-scene>
 
-    <!-- Modal 2D Box - https://www.w3schools.com/howto/howto_css_modals.asp  -->
     <script>
-// Get the modal
-var modal = document.getElementById("modal001");
+      var modal = document.getElementById("modal001");
 
-// Get the button that opens the modal
-var btn = document.querySelector("nav");
+      var btn = document.querySelector("nav");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+      var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
