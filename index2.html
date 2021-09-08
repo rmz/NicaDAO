@@ -37,7 +37,6 @@
         z-index: 1000;
         cursor: crosshair;
       }
-
       .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -56,10 +55,11 @@
         margin: 5vh auto; /* 15% from the top and centered */
         padding: 10px;
         border: 1px solid #000;
+        border-radius: 15px;
       }
       /* The Close Button */
       .close {
-        color: #aaa;
+        color: #333;
         float: right;
         font-size: 28px;
         font-weight: bold;
@@ -69,6 +69,7 @@
       .close:focus {
         color: red;
         text-decoration: none;
+        cursor: crosshair;
         /*cursor: url('covid32.png'), default !important;*/
       }
     </style>
@@ -85,13 +86,23 @@
           <p>2021 is a national election year in Nicaragua, however, the Ortega-Murillo regime have detained the oposition candidates.  In December 2020, a law was passed to facilitate the imprisonment of any opposition on the basis of possibly stirring social unrest.  Law 1055 ultimately makes any opposition to the ruling party a terrorist act.  Since late spring 2021, the police have arrested opposition candidates and high profile activists using Law 1055 as pretense for detainment.  Inspired by the concepts underlying decentralized autonomous organization, Nica DAO speculates on a future Nicaragua, free of the current dictatorship and the use of blockchain to support the families of political prisoners.
         </p>
         <p>
-          <a href="http://ambriente.com/nicaDAO/mediaKit.zip">Download Social Media Kit</a>
+          <a href="socialMedia.html">Social Media Handles &amp; Images</a>
         </p>
       </div>
     </div>
 
     <a-scene>
       <a-assets>
+        <video
+          id="video"
+          autoplay
+          loop
+          poster="video/ortega.png"
+          crossorigin="anonymous"
+        >
+          <source src="video/ortegaSomozaWhiteBG.mp4" type="video/mp4">
+        </video>
+
         <img id="meiselas" src="img/molotovMan.jpg" />
         <img id="ley1055" src="img/ley1055.jpg" />
 
@@ -147,6 +158,12 @@
         Arturo Cruz
         Medardo Mairena
         Cristiana Chamorro Barrios
+        Mauricio Diaz
+        Victor Hugo Tinoco
+        Pedro Vasquez Cortedano
+        Maria Esperanza Sanchez
+        Freddy Navas
+        Luis Rivas Anduray
         Marcos Fletes
         Walter Gomez
         Kalua Salazar"
@@ -293,6 +310,13 @@
         height="5"
         material="side: double"
       >
+      </a-plane>
+      <a-plane
+        position="0 8 8"
+        rotation="45 -176 0"
+        width="12"
+        height="8"
+        src="#video">
       </a-plane>
 
       <a-sound
