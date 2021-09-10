@@ -21,6 +21,23 @@
 
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>
+        AFRAME.registerComponent('sound-events', {
+          init: function () {
+            var el = this.el;  // <a-box>
+            el.addEventListener('mouseenter', function () {
+              el.components.sound.playSound();
+            });
+            el.addEventListener('mouseleave', function () {
+              el.components.sound.pauseSound();
+            });
+          }
+        });
+      </script>
 
     <style>
       body {
@@ -99,27 +116,31 @@
           loop
           poster="video/ortega.png"
           crossorigin="anonymous"
-        >
+          webkit-playsinline
+          playsinline
+        ><
           <source src="video/ortegaSomoza.mp4" type="video/mp4">
         </video>
-
         <img id="meiselas" src="img/molotovMan.jpg" />
-        <img id="ley1055" src="img/ley1055.jpg" />
+        <img id="ley1055" src="img/ley1055.png" />
 
         <img id="campesino" src="img/movimientoCampesino.jpg" />
 
         <a-asset-item id="volcano" src="img/volcano/scene.gltf"></a-asset-item>
         <a-asset-item id="phrygianCap" src="img/phrygianCap.glb"></a-asset-item>
+        <a-asset-item id="juez" src="img/juez.glb"></a-asset-item>
+        <a-asset-item id="money" src="img/moneyBags.glb"></a-asset-item>
 
-        <audio id="background" src="audio/nicaDAO.mp3"></audio>
+        <audio id="historia" src="audio/nicaDAO.mp3" preload="auto"></audio>
 
         <img src="img/tamaraDavila.png" id="tamara" />
         <img src="img/cristianaChamorro.png" id="chamorro" />
         <img src="img/doraMariaTellez.png" id="tellez" />
       </a-assets>
 
-      <!-- Textured plane parallel to ground.
-      <a-plane src="#ground" height="100" width="100" repeat rotation="-90 0 0"></a-plane> -->
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
 
       <a-light
         type="directional"
@@ -151,6 +172,7 @@
       <a-text
         value="Ana Margarita Vijil
         Jose Pallais Arana
+        Violeta Granera
         Jose Adan Aguerri
         Juan Sebastian Chamorro
         Miguel Mora
@@ -166,6 +188,8 @@
         Luis Rivas Anduray
         Marcos Fletes
         Walter Gomez
+        Max Jerez
+        Lesther Aleman
         Kalua Salazar"
         color="#005cbf"
         align="center"
@@ -250,6 +274,7 @@
           dir: alternate-reverse;
           dur: 16000;
           loop: true"
+        sound="src: #historia" sound-events
       >
       </a-gltf-model>
 
@@ -284,8 +309,8 @@
 
       <a-plane
         src="#campesino"
-        position="-7 4 -1"
-        rotation="0 90 0"
+        position="-7 4 -2"
+        rotation="0 65 0"
         width="4"
         height="4"
         material="side: double"
@@ -293,9 +318,47 @@
       </a-plane>
 
       <!-- The past -->
+      <a-gltf-model
+        src="#juez"
+        position="-6 -0.4 1.5"
+        scale="1.2 1.2 1.2"
+        rotation="0 90 0"
+        animation="property: object3D.position.y;
+          to: -0.5;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7 -0.2 2.5"
+        scale="1.5 1.5 1.5"
+        rotation="0 145 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7.1 -0.2 0.52"
+        scale="1.5 1.5 1.5"
+        rotation="0 75 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+
       <a-plane
         src="#meiselas"
-        position="5 2 12"
+        position="5 2 15"
         rotation="0 180 0"
         width="8"
         height="6"
@@ -304,27 +367,28 @@
       </a-plane>
       <a-plane
         src="#ley1055"
-        position="-5 1 6"
+        position="-5.5 1 6.5"
         rotation="180 -35 180"
         width="10"
-        height="5"
+        height="8"
         material="side: double"
       >
       </a-plane>
       <a-plane
-        position="0 8 8"
+        position="0 9 10"
         rotation="45 -176 0"
         width="10"
         height="10"
-        src="#video">
+        src="#video"
+        >
       </a-plane>
 
-      <a-sound
+      <!--<a-sound
         src="#background"
         autoplay="true"
         position="0 1 0"
         loop="true"
-      ></a-sound>
+      ></a-sound>-->
     </a-scene>
 
     <script>
