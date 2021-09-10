@@ -1,0 +1,416 @@
+<html>
+  <head>
+    <title>NicaDAO</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script>
+      // WebXR requires HTTPS, so the site doesn't work if someone manually enters
+      // the URL and ends up using HTTP. To work around this, force redirect from
+      // http to https for non-localhost addresses.
+      if (
+        window.location.protocol == "http:" &&
+        window.location.hostname != "localhost" &&
+        window.location.hostname != "127.0.0.1" &&
+        window.location.hostname != "[::1]"
+      ) {
+        window.location = window.location.href.replace("http:", "https:");
+      }
+    </script>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>
+        AFRAME.registerComponent('sound-events', {
+          init: function () {
+            var el = this.el;  // <a-box>
+            el.addEventListener('mouseenter', function () {
+              el.components.sound.playSound();
+            });
+            el.addEventListener('mouseleave', function () {
+              el.components.sound.pauseSound();
+            });
+          }
+        });
+      </script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      nav {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        border: 1px solid #000;
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 5px;
+        z-index: 1000;
+        cursor: crosshair;
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 100; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      /* Modal Content/Box - https://www.w3schools.com/howto/howto_css_modals.asp */
+      .modal-content {
+        background-color: rgba(256, 256, 256, 0.6);
+        margin: 5vh auto; /* 15% from the top and centered */
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 15px;
+      }
+      /* The Close Button */
+      .close {
+        color: #333;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: red;
+        text-decoration: none;
+        cursor: crosshair;
+        /*cursor: url('covid32.png'), default !important;*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav><a data-modal="modal001">About</a></nav>
+    <div id="modal001" class="modal">
+      <div class="modal-content" style="width: 600px; height: 400px;">
+        <a class="close">&times;</a>
+        <h1>Nica DAO</h1>
+        <p>
+          Since 18 April 2018, Nicaraguan citizens have protested the Ortega government, initially due to an attempt by the government to thieve upon its people by increasing taxes and slashing benefits.  The protests have continued and hundreds of protestors and activists have been imprisoned.</p>
+          <p>2021 is a national election year in Nicaragua, however, the Ortega-Murillo regime have detained the oposition candidates.  In December 2020, a law was passed to facilitate the imprisonment of any opposition on the basis of possibly stirring social unrest.  Law 1055 ultimately makes any opposition to the ruling party a terrorist act.  Since late spring 2021, the police have arrested opposition candidates and high profile activists using Law 1055 as pretense for detainment.  Inspired by the concepts underlying decentralized autonomous organization, Nica DAO speculates on a future Nicaragua, free of the current dictatorship and the use of blockchain to support the families of political prisoners.
+        </p>
+        <p>
+          <a href="socialMedia.html">Social Media Handles &amp; Images</a>
+        </p>
+      </div>
+    </div>
+
+    <a-scene>
+      <a-assets>
+        <video
+          id="video"
+          autoplay
+          loop
+          poster="video/ortega.png"
+          crossorigin="anonymous"
+          webkit-playsinline
+          playsinline
+        ><
+          <source src="video/ortegaSomoza.mp4" type="video/mp4">
+        </video>
+        <img id="meiselas" src="img/molotovMan.jpg" />
+        <img id="ley1055" src="img/ley1055.png" />
+
+        <img id="campesino" src="img/movimientoCampesino.jpg" />
+
+        <a-asset-item id="volcano" src="img/volcano/scene.gltf"></a-asset-item>
+        <a-asset-item id="phrygianCap" src="img/phrygianCap.glb"></a-asset-item>
+        <a-asset-item id="juez" src="img/juez.glb"></a-asset-item>
+        <a-asset-item id="money" src="img/moneyBags.glb"></a-asset-item>
+
+        <audio id="historia" src="audio/nicaDAO.mp3" preload="auto"></audio>
+
+        <img src="img/tamaraDavila.png" id="tamara" />
+        <img src="img/cristianaChamorro.png" id="chamorro" />
+        <img src="img/doraMariaTellez.png" id="tellez" />
+      </a-assets>
+
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+
+      <a-light
+        type="directional"
+        intensity="1.2"
+        color="#fffeeb"
+        position="4 15 10"
+      ></a-light>
+      <a-entity light="type: hemisphere; color: #94cfff; intensity: 0.6"></a-entity>
+
+      <a-entity id="ocean" ocean="density: 50; width: 50; depth: 50; speed: 2"
+                material="color: #006cc4; opacity: 0.8; metalness: 0.1; roughness: 0"
+                rotation="-90 0 0">
+      </a-entity>
+
+      <a-text
+        value="#SOSNicaragua"
+        color="#3286e6"
+        align="center"
+        position="0 4 -4"
+        scale="4 4 4"
+        animation="property: object3D.position.y;
+          to: 3.5;
+          dir: alternate;
+          dur: 5000;
+          loop: true"
+      >
+      </a-text>
+
+      <a-text
+        value="Ana Margarita Vijil
+        Jose Pallais Arana
+        Violeta Granera
+        Jose Adan Aguerri
+        Juan Sebastian Chamorro
+        Miguel Mora
+        Felix Maradiaga
+        Arturo Cruz
+        Medardo Mairena
+        Cristiana Chamorro Barrios
+        Mauricio Diaz
+        Victor Hugo Tinoco
+        Pedro Vasquez Cortedano
+        Maria Esperanza Sanchez
+        Freddy Navas
+        Luis Rivas Anduray
+        Marcos Fletes
+        Walter Gomez
+        Max Jerez
+        Lesther Aleman
+        Kalua Salazar"
+        color="#005cbf"
+        align="center"
+        position="4 5 0"
+        scale="2 2 2"
+        rotation="-190 90 180"
+      >
+      </a-text>
+
+      <!-- Rainbow -->
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="19.5" radius-outer="20" segments-theta="48" color="#ff0000"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="19" radius-outer="19.5" segments-theta="48" color="#ff7f00"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="18.5" radius-outer="19" segments-theta="48" color="#ffff00"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="18" radius-outer="18.5" segments-theta="48" color="#00ff00"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="17.5" radius-outer="18" segments-theta="48" color="#0000ff"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="17" radius-outer="17.5" segments-theta="48" color="#4b0082"></a-ring>
+      <a-ring position="0 0 -18" rotation="0 0 0" radius-inner="16.5" radius-outer="17" segments-theta="48" color="#9400d3"></a-ring>
+
+      <!-- 5 Volcanoes -->
+      <a-gltf-model
+        src="#volcano"
+        position="-4 0 -5"
+        scale="1.5 2.5 1.5"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dir: alternate-reverse;
+          dur: 15000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#volcano"
+        position="-2 0 -5"
+        scale="1.5 2.5 1.5"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dir: alternate-reverse;
+          dur: 15000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#volcano"
+        position="0 0 -5"
+        scale="1.5 2.5 1.5"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dir: alternate-reverse;
+          dur: 15000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#volcano"
+        position="2 0 -5"
+        scale="1.5 2.5 1.5"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dir: alternate-reverse;
+          dur: 15000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#volcano"
+        position="4 0 -5"
+        scale="1.5 2.5 1.5"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dir: alternate-reverse;
+          dur: 15000;
+          loop: true"
+      >
+      </a-gltf-model>
+
+      <a-gltf-model
+        src="#phrygianCap"
+        position="0 3 -5"
+        scale="0.2 0.2 0.2"
+        animation="property: object3D.rotation.y;
+          to: -360;
+          dir: alternate-reverse;
+          dur: 16000;
+          loop: true"
+        sound="src: #historia" sound-events
+      >
+      </a-gltf-model>
+
+      <!-- Activists -->
+      <a-plane
+        src="#tamara"
+        position="-6 3 -12"
+        rotation="0 30 0"
+        width="3"
+        height="4"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        src="#chamorro"
+        position="0 3 -13"
+        rotation="0 0 0"
+        width="3"
+        height="4"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        src="#tellez"
+        position="6 3 -12"
+        rotation="0 -30 0"
+        width="3"
+        height="4"
+        material="side: double"
+      >
+      </a-plane>
+
+      <a-plane
+        src="#campesino"
+        position="-7 4 -2"
+        rotation="0 65 0"
+        width="4"
+        height="4"
+        material="side: double"
+      >
+      </a-plane>
+
+      <!-- The past -->
+      <a-gltf-model
+        src="#juez"
+        position="-6 -0.4 1.5"
+        scale="1.2 1.2 1.2"
+        rotation="0 90 0"
+        animation="property: object3D.position.y;
+          to: -0.5;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7 -0.2 2.5"
+        scale="1.5 1.5 1.5"
+        rotation="0 145 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7.1 -0.2 0.52"
+        scale="1.5 1.5 1.5"
+        rotation="0 75 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+
+      <a-plane
+        src="#meiselas"
+        position="5 2 15"
+        rotation="0 180 0"
+        width="8"
+        height="6"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        src="#ley1055"
+        position="-5.5 1 6.5"
+        rotation="180 -35 180"
+        width="10"
+        height="8"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        position="0 9 10"
+        rotation="45 -176 0"
+        width="10"
+        height="10"
+        src="#video"
+        >
+      </a-plane>
+
+      <!--<a-sound
+        src="#background"
+        autoplay="true"
+        position="0 1 0"
+        loop="true"
+      ></a-sound>-->
+    </a-scene>
+
+    <script>
+      var modal = document.getElementById("modal001");
+
+      var btn = document.querySelector("nav");
+
+      var span = document.getElementsByClassName("close")[0];
+
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
