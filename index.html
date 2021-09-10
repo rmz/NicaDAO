@@ -110,6 +110,7 @@
         <video
           id="video"
           autoplay
+          muted
           loop
           poster="video/ortega.png"
           crossorigin="anonymous"
@@ -118,12 +119,14 @@
         </video>
 
         <img id="meiselas" src="img/molotovMan.jpg" />
-        <img id="ley1055" src="img/ley1055.jpg" />
+        <img id="ley1055" src="img/ley1055.png" />
 
         <img id="campesino" src="img/movimientoCampesino.jpg" />
 
         <a-asset-item id="volcano" src="img/volcano/scene.gltf"></a-asset-item>
         <a-asset-item id="phrygianCap" src="img/phrygianCap.glb"></a-asset-item>
+        <a-asset-item id="juez" src="img/juez.glb"></a-asset-item>
+        <a-asset-item id="money" src="img/moneyBags.glb"></a-asset-item>
 
         <audio id="background" src="audio/nicaDAO.mp3"></audio>
 
@@ -301,8 +304,8 @@
 
       <a-plane
         src="#campesino"
-        position="-7 4 -1"
-        rotation="0 90 0"
+        position="-7 4 -2"
+        rotation="0 65 0"
         width="4"
         height="4"
         material="side: double"
@@ -310,9 +313,47 @@
       </a-plane>
 
       <!-- The past -->
+      <a-gltf-model
+        src="#juez"
+        position="-6 -0.4 1.5"
+        scale="1.2 1.2 1.2"
+        rotation="0 90 0"
+        animation="property: object3D.position.y;
+          to: -0.5;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7 -0.2 2.5"
+        scale="1.5 1.5 1.5"
+        rotation="0 145 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+      <a-gltf-model
+        src="#money"
+        position="-7.1 -0.2 0.52"
+        scale="1.5 1.5 1.5"
+        rotation="0 75 0"
+        animation="property: object3D.position.y;
+          to: -0.3;
+          dir: alternate;
+          dur: 1000;
+          loop: true"
+      >
+      </a-gltf-model>
+
       <a-plane
         src="#meiselas"
-        position="5 2 12"
+        position="5 2 15"
         rotation="0 180 0"
         width="8"
         height="6"
@@ -321,27 +362,27 @@
       </a-plane>
       <a-plane
         src="#ley1055"
-        position="-5 1 6"
+        position="-5.5 1 6.5"
         rotation="180 -35 180"
         width="10"
-        height="5"
+        height="8"
         material="side: double"
       >
       </a-plane>
       <a-plane
-        position="0 8 8"
+        position="0 9 10"
         rotation="45 -176 0"
         width="10"
         height="10"
         src="#video">
       </a-plane>
 
-      <a-sound
+      <!--<a-sound
         src="#background"
         autoplay="true"
         position="0 1 0"
         loop="true"
-      ></a-sound>
+      ></a-sound>-->
     </a-scene>
 
     <script>
