@@ -21,6 +21,23 @@
 
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>
+        AFRAME.registerComponent('sound-events', {
+          init: function () {
+            var el = this.el;  // <a-box>
+            el.addEventListener('mouseenter', function () {
+              el.components.sound.playSound();
+            });
+            el.addEventListener('mouseleave', function () {
+              el.components.sound.pauseSound();
+            });
+          }
+        });
+      </script>
 
     <style>
       body {
@@ -113,6 +130,8 @@
           loop
           poster="video/ortega.png"
           crossorigin="anonymous"
+          webkit-playsinline
+          playsinline
         ><
           <source src="video/ortegaSomoza.mp4" type="video/mp4">
         </video>
@@ -126,15 +145,16 @@
         <a-asset-item id="juez" src="img/juez.glb"></a-asset-item>
         <a-asset-item id="money" src="img/moneyBags.glb"></a-asset-item>
 
-        <audio id="background" src="audio/nicaDAO.mp3"></audio>
+        <audio id="historia" src="audio/nicaDAO.mp3" preload="auto"></audio>
 
         <img src="img/tamaraDavila.png" id="tamara" />
         <img src="img/cristianaChamorro.png" id="chamorro" />
         <img src="img/doraMariaTellez.png" id="tellez" />
       </a-assets>
 
-      <!-- Textured plane parallel to ground.
-      <a-plane src="#ground" height="100" width="100" repeat rotation="-90 0 0"></a-plane> -->
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
 
       <a-light
         type="directional"
@@ -268,6 +288,7 @@
           dir: alternate-reverse;
           dur: 16000;
           loop: true"
+        sound="src: #historia" sound-events
       >
       </a-gltf-model>
 
@@ -372,7 +393,8 @@
         rotation="45 -176 0"
         width="10"
         height="10"
-        src="#video">
+        src="#video"
+        >
       </a-plane>
 
       <!--<a-sound
