@@ -21,23 +21,8 @@
 
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <script>
-        AFRAME.registerComponent('sound-events', {
-          init: function () {
-            var el = this.el;  // <a-box>
-            el.addEventListener('mouseenter', function () {
-              el.components.sound.playSound();
-            });
-            el.addEventListener('mouseleave', function () {
-              el.components.sound.pauseSound();
-            });
-          }
-        });
-      </script>
 
     <style>
       body {
@@ -54,6 +39,7 @@
         z-index: 1000;
         cursor: crosshair;
       }
+      h1 img { height: 36px; }
       #qr {
         position: fixed;
         bottom: 10px;
@@ -109,10 +95,11 @@
     <div id="modal001" class="modal">
       <div class="modal-content" style="width: 600px; height: 400px;">
         <a class="close">&times;</a>
-        <h1>Nica DAO</h1>
+        <h1>Nica DAO <img src="img/nicaEscudo.png" /></h1>
         <p>
-          Since 18 April 2018, Nicaraguan citizens have protested the Ortega government, initially due to an attempt by the government to thieve upon its people by increasing taxes and slashing benefits.  The protests have continued and hundreds of protestors and activists have been imprisoned.</p>
-          <p>2021 is a national election year in Nicaragua, however, the Ortega-Murillo regime have detained the oposition candidates.  In December 2020, a law was passed to facilitate the imprisonment of any opposition on the basis of possibly stirring social unrest.  Law 1055 ultimately makes any opposition to the ruling party a terrorist act.  Since late spring 2021, the police have arrested opposition candidates and high profile activists using Law 1055 as pretense for detainment.  Inspired by the concepts underlying decentralized autonomous organization, Nica DAO speculates on a future Nicaragua, free of the current dictatorship and the use of blockchain to support the families of political prisoners.
+          Since 18 April 2018, Nicaraguan citizens have protested the Ortega government, initially due to an attempt by the government to thieve upon its people by increasing taxes and slashing benefits.  The protests have continued and hundreds of protestors have been killed and hundreds are imprisoned.</p>
+          <p>2021 is a national election year in Nicaragua, however, the Ortega-Murillo regime have detained the oposition candidates.  In December 2020, a law was passed to facilitate the imprisonment of any opposition on the basis of possibly stirring social unrest.  Law 1055 ultimately makes any opposition to the ruling party a terrorist act.  Since late spring 2021, the police have arrested opposition candidates and high profile activists using Law 1055 as pretense for detainment.</p>
+          <p>Inspired by the concepts underlying decentralized autonomous organization, Nica DAO speculates on a future Nicaragua; one that is free of the current dictatorship and uses blockchain to support the families of political prisoners.  Blockchain presents the potential to free us from a monetary system supported by the carceral state (not only that of Nicaragua, but across the Americas, including the U.S.).  Also the potential cost reductions of donating via blockchain translates to greater shares reaching recipients.
         </p>
         <p>
           <a href="socialMedia.html">Social Media Handles &amp; Images</a>
@@ -130,8 +117,6 @@
           loop
           poster="video/ortega.png"
           crossorigin="anonymous"
-          webkit-playsinline
-          playsinline
         ><
           <source src="video/ortegaSomoza.mp4" type="video/mp4">
         </video>
@@ -288,7 +273,6 @@
           dir: alternate-reverse;
           dur: 16000;
           loop: true"
-        sound="src: #historia" sound-events
       >
       </a-gltf-model>
 
@@ -332,10 +316,24 @@
       </a-plane>
 
       <!-- The past -->
+      <a-text
+        value="Pathway to Dictatorship:
+        Control the National Assembly
+        Control the Supreme Court
+        Rewrite  Constitution
+        Destroy Election Rules
+        Delete Term Limits..."
+        color="#000"
+        align="center"
+        position="-2.5 .5 1"
+        scale="2 2 2"
+        rotation="-80 90 0"
+      >
+      </a-text>
       <a-gltf-model
         src="#juez"
-        position="-6 -0.4 1.5"
-        scale="1.2 1.2 1.2"
+        position="-7 -0.4 1.3"
+        scale="1.4 1.4 1.4"
         rotation="0 90 0"
         animation="property: object3D.position.y;
           to: -0.5;
@@ -347,8 +345,8 @@
       </a-gltf-model>
       <a-gltf-model
         src="#money"
-        position="-7 -0.2 2.5"
-        scale="1.5 1.5 1.5"
+        position="-7 -0.2 2.6"
+        scale="1.7 1.7 1.7"
         rotation="0 145 0"
         animation="property: object3D.position.y;
           to: -0.3;
@@ -359,8 +357,8 @@
       </a-gltf-model>
       <a-gltf-model
         src="#money"
-        position="-7.1 -0.2 0.52"
-        scale="1.5 1.5 1.5"
+        position="-7.5 -0.2 0.1"
+        scale="1.7 1.7 1.7"
         rotation="0 75 0"
         animation="property: object3D.position.y;
           to: -0.3;
@@ -397,12 +395,12 @@
         >
       </a-plane>
 
-      <!--<a-sound
-        src="#background"
+      <a-sound
+        src="#historia"
         autoplay="true"
-        position="0 1 0"
-        loop="true"
-      ></a-sound>-->
+        position="10 1 0"
+        loop="false"
+      ></a-sound>
     </a-scene>
 
     <script>
