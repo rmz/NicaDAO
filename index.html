@@ -121,6 +121,8 @@
           <source src="video/ortegaSomoza.mp4" type="video/mp4">
         </video>
         <img id="meiselas" src="img/molotovMan.jpg" />
+        <img id="literacy" src="img/alfabetizacion.jpg" />
+        <img id="ortegaMurillo" src="img/ortegaMurillo.jpg" />
         <img id="ley1055" src="img/ley1055.png" />
 
         <img id="campesino" src="img/movimientoCampesino.jpg" />
@@ -137,9 +139,9 @@
         <img src="img/doraMariaTellez.png" id="tellez" />
       </a-assets>
 
-      <a-camera>
+      <!--<a-camera>
         <a-cursor></a-cursor>
-      </a-camera>
+      </a-camera>-->
 
       <a-light
         type="directional"
@@ -326,7 +328,7 @@
         Delete Term Limits..."
         color="#000"
         align="center"
-        position="-2.5 .5 1"
+        position="-2 .5 1"
         scale="2 2 2"
         rotation="-80 90 0"
       >
@@ -371,8 +373,26 @@
 
       <a-plane
         src="#meiselas"
-        position="5 2 15"
-        rotation="0 180 0"
+        position="16 3 18"
+        rotation="0 -135 0"
+        width="8"
+        height="6"
+        material="side: double"
+      >
+      </a-plane>
+      <a-plane
+        src="#literacy"
+        position="7 3 16"
+        rotation="0 -145 0"
+        width="8"
+        height="6"
+        material="side: double"
+      >
+    </a-plane>
+      <a-plane
+        src="#ortegaMurillo"
+        position="-1.5 1.5 12"
+        rotation="0 0 0"
         width="8"
         height="6"
         material="side: double"
@@ -380,8 +400,8 @@
       </a-plane>
       <a-plane
         src="#ley1055"
-        position="-5.5 1 6.5"
-        rotation="180 -35 180"
+        position="-7 1 6"
+        rotation="0 140 0"
         width="10"
         height="8"
         material="side: double"
