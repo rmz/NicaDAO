@@ -35,12 +35,13 @@
         top: 10px;
         left: 10px;
         border: 1px solid #000;
-        padding: 5px;
+        padding: 10px;
         background-color: rgba(255, 255, 255, 0.6);
         border-radius: 5px;
         z-index: 1000;
         cursor: crosshair;
       }
+      a { color: #a20000; text-decoration: none; font-weight: bold;}
       h1 img { height: 36px; }
       #qr {
         position: fixed;
@@ -68,7 +69,7 @@
 
       /* Modal Content/Box - https://www.w3schools.com/howto/howto_css_modals.asp */
       .modal-content {
-        background-color: rgba(256, 256, 256, 0.6);
+        background-color: rgba(256, 256, 256, 0.7);
         margin: 5vh auto; /* 15% from the top and centered */
         padding: 10px;
         border: 1px solid #000;
@@ -95,14 +96,28 @@
   <body>
     <nav><a data-modal="modal001">About</a></nav>
     <div id="modal001" class="modal">
-      <div class="modal-content" style="width: 600px; height: 500px;">
+      <div class="modal-content" style="width: 600px; height: 560px;">
         <a class="close">&times;</a>
         <h1>Nica DAO <img src="img/nicaEscudo.png" /></h1>
-        <p>
+        <div style="margin:15px 0 10px 0;">
+          <a href="#english" onclick="toggle_visibility('english')">English</a> ::
+          <a href="#spanish" onclick="toggle_visibility('spanish')">Espa&ntilde;ol</a>
+        </div>
+        <div id="english">
+          <p>
           Since 18 April 2018, Nicaraguan citizens have protested the Ortega government, initially due to an attempt by the government to thieve upon its people by increasing taxes and slashing benefits.  The protests have continued and hundreds of protestors have been killed and hundreds are imprisoned.</p>
           <p>2021 is a national election year in Nicaragua, however, the Ortega-Murillo regime have detained the opposition candidates.  In December 2020, a law was passed to facilitate the imprisonment of any opposition on the basis of possibly stirring social unrest.  Law 1055 ultimately makes any opposition to the ruling party a terrorist act.  Since late spring 2021, the police have arrested opposition candidates and high profile activists using Law 1055 as pretense for detainment.</p>
           <p>Inspired by the concepts underlying decentralized autonomous organization, Nica DAO speculates on a future Nicaragua; one that is free of the current dictatorship and uses blockchain to support the families of political prisoners.  Blockchain presents the potential to free us from a monetary system supported by the carceral state (not only that of Nicaragua, but across the Americas, including the U.S.).  Also the potential cost reductions of donating via blockchain translates to greater shares reaching recipients.
+          </p>
+       </div>
+       <div id="spanish" style="display: none;">
+        <p>
+          Desde el 18 de abril de 2018, los ciudadanos nicarag&uuml;enses han protestado contra el gobierno de Ortega, inicialmente debido a un intento del gobierno de robar a su pueblo atravez un aumento de impuestos y recortando los beneficios sociales. Las protestas han continuado y cienes de manifestantes han sido asesinados y cienes est&aacute;n encarcelados.
         </p>
+        <p>2021 es a&ntilde;o de elecciones nacionales en Nicaragua, sin embargo, el r&eacute;gimen Ortega-Murillo ha detenido a los candidatos de la oposici&oacute;n. En diciembre de 2020, se aprob&oacute; una ley para facilitar el encarcelamiento de cualquier oposici&oacute;n sobre la base de posibles disturbios sociales. La Ley 1055 convierte en acto terrorista cualquier oposici&oacute;n al partido gobernante. Desde finales de la primavera de 2021, la polic&iacute;a ha arrestado a candidatos de la oposici&oacute;n y activistas de alto perfil utilizando la Ley 1055 como pretexto para la detenci&oacute;n.</p>
+        <p>Inspirado por los conceptos de la organizaci&oacute;n aut&oacute;noma descentralizada, Nica DAO especula sobre una nueva Nicaragua; una que est&aacute; libre de la dictadura actual y usa blockchain para apoyar a las familias de los presos pol&iacute;ticos. Blockchain presenta el potencial de liberarnos de un sistema monetario respaldado por el estado carcelario (no solo el de Nicaragua, sino en todo el continente de las americas, incluido EE. UU.). Adem&aacute;s, las posibles reducciones de costos de la donaci&oacute;n a trav&eacute;s de blockchain se traducen en mayores donaciones para los recipientes.
+        </p>
+       </div>
         <p>
           <a href="socialMedia.html">Social Media Handles &amp; Images</a>
         </p>
@@ -446,6 +461,21 @@
           modal.style.display = "none";
         }
       };
+
+      //language toggle
+      var _hidediv = null;
+
+    function toggle_visibility(id) {
+        if(_hidediv) {
+            _hidediv();
+        } else {
+          document.getElementById('english').style.display = 'none';
+        }
+
+        var div = document.getElementById(id);
+        div.style.display = 'block';
+        _hidediv = function () { div.style.display = 'none'; };
+    }
     </script>
   </body>
 </html>
